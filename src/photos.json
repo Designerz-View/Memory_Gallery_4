@@ -1,0 +1,27 @@
+[
+    {
+        "url": "05.jpg",
+        "orientation": "portrait",
+        "caption": "A moment of serendipity. The lighting was just perfect to capture the emotion of the day."
+    },
+    {
+        "url": "04.jpg",
+        "orientation": "landscape",
+        "caption": "Wandering through the wilderness. Nature's canvas never ceases to amaze me."
+    },
+    {
+        "url": "03.jpg",
+        "orientation": "portrait",
+        "caption": "Lost in the magic of the city lights. An unforgettable evening captured perfectly."
+    },
+    {
+        "url": "02.jpg",
+        "orientation": "landscape",
+        "caption": "A serene escape from the hustle. The calm before the storm on that beautiful afternoon."
+    },
+    {
+        "url": "01.jpg",
+        "orientation": "portrait",
+        "caption": "Stolen glances and raw emotion. This is why I love genuine, unscripted moments."
+    }
+]

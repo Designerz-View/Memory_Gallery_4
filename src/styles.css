@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overscroll-behavior-y: contain;
+  user-select: none;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#photo-deck {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.app-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Text Overlay Styling */
+.text-overlay {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+  max-width: 600px;
+  pointer-events: none;
+  /* Let clicks pass through if cards fly high */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.main-title {
+  font-family: 'Caveat', cursive;
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-description {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Card Deck Layout */
+.deck-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10vh;
+  /* Push down slightly past the text */
+}
+
+.deck-container>div.card-wrapper {
+  position: absolute;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  /* Crucial for smooth react-use-gesture dragging */
+}
+
+/* Modern Polaroid Design */
+.polaroid-card {
+  background-color: #fafafa;
+  will-change: transform;
+  border-radius: 12px;
+  box-shadow:
+    0 20px 50px -10px rgba(0, 0, 0, 0.5),
+    0 10px 20px -15px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-bottom: 24px;
+  cursor: grab;
+  transition: box-shadow 0.2s ease;
+}
+
+.polaroid-card:active {
+  cursor: grabbing;
+  box-shadow:
+    0 30px 60px -10px rgba(0, 0, 0, 0.7),
+    0 15px 25px -15px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+/* The actual image inside the polaroid */
+.polaroid-image {
+  flex: 1;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+  background-color: #e5e5e5;
+  /* Fallback */
+}
+
+/* Caption text at the bottom */
+.polaroid-caption {
+  margin-top: 16px;
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-caption p {
+  color: #333;
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .main-description {
+    font-size: 0.95rem;
+  }
+
+  .text-overlay {
+    top: 2%;
+    padding: 15px;
+  }
+
+  .deck-container {
+    padding-top: 15vh;
+  }
+}
